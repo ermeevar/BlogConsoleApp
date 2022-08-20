@@ -10,6 +10,9 @@ namespace BlogApp.Forms
     /// </summary>
     public class FolderForm
     {
+        // Поле для хранения экземпляра класса
+        private static FolderForm instance;
+        
         /// <summary>
         /// Сервис статей
         /// </summary>
@@ -24,6 +27,17 @@ namespace BlogApp.Forms
         /// Утилита счетчик
         /// </summary>
         private CountUtil CountUtil => new CountUtil();
+        
+        /// <summary>
+        /// Возврат экземпляра класса
+        /// </summary>
+        /// <returns>Экземпляр класса</returns>
+        public static FolderForm GetInstance()
+        {
+            if (instance == null)
+                instance = new FolderForm();
+            return instance;
+        }
         
         /// <summary>
         /// Начать
@@ -125,7 +139,7 @@ namespace BlogApp.Forms
         /// </summary>
         private void GoBack()
         {
-            new ObjectForm().Start();
+            ObjectForm.GetInstance().Start();
         }
     }
 }

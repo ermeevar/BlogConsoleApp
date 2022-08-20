@@ -24,7 +24,7 @@ namespace BlogApp.Forms
             ColorUtil.SystemMessageWriteLine("~БЛОГ РУФИНЫ~");
             CountUtil.PrintShortCounts();
 
-            new ObjectForm().Start();
+            ObjectForm.GetInstance().Start();
         }
     }
 }

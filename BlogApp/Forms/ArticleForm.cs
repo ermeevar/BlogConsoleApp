@@ -10,6 +10,9 @@ namespace BlogApp.Forms
     /// </summary>
     public class ArticleForm
     {
+        // Поле для хранения экземпляра класса
+        private static ArticleForm instance;
+ 
         /// <summary>
         /// Сервис статей
         /// </summary>
@@ -24,6 +27,17 @@ namespace BlogApp.Forms
         /// Уилита счетчик
         /// </summary>
         private CountUtil CountUtil => new CountUtil();
+        
+        /// <summary>
+        /// Возврат экземпляра класса
+        /// </summary>
+        /// <returns>Экземпляр класса</returns>
+        public static ArticleForm GetInstance()
+        {
+            if (instance == null)
+                instance = new ArticleForm();
+            return instance;
+        }
         
         /// <summary>
         /// Начать
@@ -210,7 +224,7 @@ namespace BlogApp.Forms
         /// </summary>
         private void GoBack()
         {
-            new ObjectForm().Start();
+            ObjectForm.GetInstance().Start();
         }
     }
 }

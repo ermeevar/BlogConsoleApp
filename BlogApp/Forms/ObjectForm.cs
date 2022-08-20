@@ -9,6 +9,20 @@ namespace BlogApp.Forms
     /// </summary>
     public class ObjectForm
     {
+        // Поле для хранения экземпляра класса
+        private static ObjectForm instance;
+        
+        /// <summary>
+        /// Возврат экземпляра класса
+        /// </summary>
+        /// <returns>Экземпляр класса</returns>
+        public static ObjectForm GetInstance()
+        {
+            if (instance == null)
+                instance = new ObjectForm();
+            return instance;
+        }
+        
         /// <summary>
         /// Начать
         /// </summary>
@@ -23,10 +37,10 @@ namespace BlogApp.Forms
                 switch (Convert.ToInt32(Console.ReadLine()))
                 {
                     case 1: 
-                        new FolderForm().Start();
+                        FolderForm.GetInstance().Start();
                         break;
                     case 2:
-                        new ArticleForm().Start();
+                        ArticleForm.GetInstance().Start();
                         break;
                     default:
                         StaticWordsUtils.PrintInvalidInputSignCase();
